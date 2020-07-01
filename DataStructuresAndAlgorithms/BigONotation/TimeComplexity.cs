@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DataStructuresAndAlgorithms.BigONotation
 {
@@ -13,9 +14,9 @@ namespace DataStructuresAndAlgorithms.BigONotation
         // O(1)
         // A function has contant time complexity, denoted as O(1) if the number of operations it has to perform
         // remains unchanged even as the size of the input grows.
-        public void AddAllNumbersFromOneToNUsingMaths(int n)
+        public int AddAllNumbersFromOneToNUsingMaths(int n)
         {
-            Console.WriteLine(n * (n + 1) / 2);
+            return n * (n + 1) / 2;
         }
 
 
@@ -24,7 +25,7 @@ namespace DataStructuresAndAlgorithms.BigONotation
         // scales linearly with the size in the input.
         // As this method runs a for loop an amount of times that linearly depends on the size of the input, its
         // time complexity is O(n).
-        public void AddAllNumbersFromOneToNUsingLoops(int n)
+        public int AddAllNumbersFromOneToNUsingLoops(int n)
         {
             int sum = 0;
             for (int i = 1; i <= n; i++)
@@ -32,7 +33,7 @@ namespace DataStructuresAndAlgorithms.BigONotation
                 sum += i;
             }
 
-            Console.WriteLine(sum);
+            return sum;
         }
 
         // O(max(m,n)) or O(m + n)
@@ -59,15 +60,19 @@ namespace DataStructuresAndAlgorithms.BigONotation
         // A general rule of thumb is that nested loops result in exponent (i.e. ^2, ^3, ^4...etc) time complexity because longhand
         // it would be written O(n*n).
         // If you had two inputs and looped over them in a nested fashion, this means you'd have O(n*m).
-        public void LogAllPairs(int[] input)
+        public List<string> LogAllPairs(int[] input)
         {
+            List<string> output = new List<string>();
+
             for (int i = 0; i < input.Length; i++)
             {
                 for (int j = 0; j < input.Length; j++)
                 {
-                    Console.WriteLine(String.Format("{0},{1}", input[i].ToString(), input[j].ToString()));
+                    output.Add(String.Format("{0},{1}", input[i].ToString(), input[j].ToString()));
                 }
             }
+
+            return output;
         }
 
         // Others - these will be covered in their respective algorithms:
