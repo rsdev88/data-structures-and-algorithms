@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DataStructuresAndAlgorithms.ExampleQuestions
 {
-    public class ExampleQuestions
+    public class ExampleQuestions_BigO
     {
         /* Question 1:
          * ************

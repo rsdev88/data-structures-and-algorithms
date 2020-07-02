@@ -1,10 +1,10 @@
-﻿using DataStructuresAndAlgorithms.ExampleQuestions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DataStructuresAndAlgorithms.ExampleQuestions;
 
 namespace DataStructuresAndAlogrithmsTests.ExampleQuestionsTests
 {
     [TestClass]
-    public class ExampleQuestionsTests
+    public class ExampleQuestions_BigOTests
     {
 
         char[] array1;
@@ -13,7 +13,7 @@ namespace DataStructuresAndAlogrithmsTests.ExampleQuestionsTests
         int[] array4;
         int[] array5;
         int[] array6;
-        ExampleQuestions exampleQuestions;
+        ExampleQuestions_BigO exampleQuestions;
 
         [TestInitialize]
         public void ExampleQuestionTests()
@@ -25,7 +25,7 @@ namespace DataStructuresAndAlogrithmsTests.ExampleQuestionsTests
             this.array5 = new int[] { 1, 2, 3, 4, 9 };
             this.array6 = new int[] { -1, 2, 2, 1, 5, 9, 4, 6, 7 };
 
-            this.exampleQuestions = new ExampleQuestions();
+            this.exampleQuestions = new ExampleQuestions_BigO();
         }
 
         [TestMethod]
