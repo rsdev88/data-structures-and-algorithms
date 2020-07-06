@@ -257,5 +257,48 @@ namespace DataStructuresAndAlogrithmsTests.DataStructures
             Assert.IsNull(linkedList.Head.Next.Next.Next.Next.Next);
             Assert.AreEqual(2, linkedList.Tail.Value);
         }
+
+        [TestMethod]
+        public void LinkedListTests_Reverse()
+        {
+            // Arrange
+            var linkedList = new LinkedList(6);
+
+            //Act
+            linkedList.Append(5);
+            linkedList.Append(4);
+            linkedList.Append(3);
+            linkedList.Append(2);
+            linkedList.Append(1);
+
+            var output = linkedList.Reverse();
+
+            //Assert
+            Assert.AreEqual(6, output.Length);
+            Assert.AreEqual(1, output.Head.Value);
+            Assert.AreEqual(2, output.Head.Next.Value);
+            Assert.AreEqual(3, output.Head.Next.Next.Value);
+            Assert.AreEqual(4, output.Head.Next.Next.Next.Value);
+            Assert.AreEqual(5, output.Head.Next.Next.Next.Next.Value);
+            Assert.AreEqual(6, output.Head.Next.Next.Next.Next.Next.Value);
+            Assert.IsNull(output.Head.Next.Next.Next.Next.Next.Next);
+            Assert.AreEqual(6, output.Tail.Value);
+        }
+
+        [TestMethod]
+        public void LinkedListTests_Reverse_OneItemList()
+        {
+            // Arrange
+            var linkedList = new LinkedList(6);
+
+            //Act
+            var output = linkedList.Reverse();
+
+            //Assert
+            Assert.AreEqual(1, output.Length);
+            Assert.AreEqual(6, output.Head.Value);
+            Assert.IsNull(output.Head.Next);
+            Assert.AreEqual(6, output.Tail.Value);
+        }
     }
 }

@@ -159,5 +159,31 @@ namespace DataStructuresAndAlgorithms.DataStructures
             }
         }
 
+        //Returns a reversed version of the current linked list.
+        public LinkedList Reverse()
+        {
+            if (this.Length == 1)
+            {
+                return this;
+            }
+
+            LinkedList reversedList = new LinkedList(this.Head.Value);
+
+            var currentNode = this.Head.Next;
+            var currentIndex = 2;
+
+            while (currentIndex <= this.Length)
+            {
+                var newNode = new LinkedListNode(currentNode.Value, reversedList.Head);
+                reversedList.Head = newNode;
+                reversedList.Length++;
+
+                currentNode = currentNode.Next;
+                currentIndex++;
+            }
+
+            return reversedList;
+        }
+
     }
 }
