@@ -97,5 +97,19 @@ namespace DataStructuresAndAlogrithmsTests.ExampleQuestions
             Assert.AreEqual(89, tester.Fibonacci_Recursive(11));
             Assert.AreEqual(144, tester.Fibonacci_Recursive(12));
         }
+
+        [TestMethod]
+        public void ReverseString_Recursive()
+        {
+            //Arrange 
+            var tester = new ExampleQuestions_Recursion();
+
+            //Act - see assertions
+
+            Assert.AreEqual("!dlrow olleH", tester.ReverseString("Hello world!"));
+            Assert.AreEqual("serutcurts ataD", tester.ReverseString("Data structures"));
+            Assert.AreEqual("smhtiroglA", tester.ReverseString("Algorithms"));
+            Assert.AreEqual("god yzal eht revo spmuj xof nworb kciuq ehT", tester.ReverseString("The quick brown fox jumps over the lazy dog"));
+        }
     }
 }

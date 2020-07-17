@@ -85,5 +85,25 @@ namespace DataStructuresAndAlgorithms.ExampleQuestions
 
             return secondNumber;
         }
+
+
+        /*
+         * Write a recursive function to reverse a string
+         * e.g. "Hello world" --> "dlrow olleH"
+         */
+         //O(n) time
+         //O(n) space (increased call stack)
+        public string ReverseString(string phrase)
+        {
+            if (phrase.Length == 1)
+            {
+                return phrase;
+            }
+
+            var lastLetter = phrase[phrase.Length - 1];
+            phrase = phrase.Substring(0, phrase.Length - 1);
+
+            return lastLetter + ReverseString(phrase);
+        }
     }
 }
