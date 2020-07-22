@@ -52,5 +52,35 @@ namespace DataStructuresAndAlogrithmsTests.Algorithms
             //Assert
             Assert.IsTrue(Enumerable.SequenceEqual(expectedOutput, output));
         }
+
+        [TestMethod]
+        public void MergeSort()
+        {
+            //Arrange
+            var sorter = new Sorting();
+            var unsortedList = new List<int>() { 5, 1, 9, 2, 7, 2, 1, 0, 32, 4 };
+            var expectedOutput = new List<int>() { 0, 1, 1, 2, 2, 4, 5, 7, 9, 32 };
+
+            //Act
+            var output = sorter.MergeSort(unsortedList);
+
+            //Assert
+            Assert.IsTrue(Enumerable.SequenceEqual(expectedOutput, output));
+        }
+
+        [TestMethod]
+        public void QuickSort()
+        {
+            //Arrange
+            var sorter = new Sorting();
+            var unsortedList = new List<int>() { 5, 1, 9, 2, 7, 2, 1, 0, 32, 4 };
+            var expectedOutput = new List<int>() { 0, 1, 1, 2, 2, 4, 5, 7, 9, 32 };
+
+            //Act
+            var output = sorter.QuickSort(unsortedList, 0, unsortedList.Count - 1);
+
+            //Assert
+            Assert.IsTrue(Enumerable.SequenceEqual(expectedOutput, output));
+        }
     }
 }

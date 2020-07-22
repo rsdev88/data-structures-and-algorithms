@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DataStructuresAndAlgorithms.Algorithms
@@ -122,5 +123,108 @@ namespace DataStructuresAndAlgorithms.Algorithms
             return sortedList;
         }
 
+        //Time complexity - O(n log n) - n because you have to divide first, then log n because you're forming a tree.
+        //Space complexity - O(n) - to store the growing tree
+        // Use a divide an conquer approach to keep breaking the list into half until you have individual leaves.
+        // Then build it back up into a tree of comparisons, comparing two digits, then four, etc, until you have your sorted list.
+        public List<int> MergeSort(List<int> list)
+        {
+            if (list.Count == 1)
+            {
+                return list;
+            }
+
+            //Split list into right and left
+            decimal middle = list.Count / 2M;
+            var left = list.Take((int)Math.Floor(middle)).ToList<int>();
+            var right = list.TakeLast((int)Math.Ceiling(middle)).ToList<int>();
+
+            return Merge(MergeSort(left), MergeSort(right));
+        }
+
+        // Start from the beginning of each list and compare the items, adding the smallest one
+        // to a growing list (removing the added item from its original list as we go).
+        private List<int> Merge(List<int> left, List<int> right)
+        {
+            List<int> sortedList = new List<int>();
+
+            while (left.Count > 0 || right.Count > 0)
+            {
+                if (left.Count == 0)
+                {
+                    sortedList.AddRange(right);
+                    break;
+                }
+                else if(right.Count == 0)
+                {
+                    sortedList.AddRange(left);
+                    break;
+                }
+
+                if (left[0] <= right[0])
+                {
+                    sortedList.Add(left[0]);
+                    left.RemoveAt(0);
+                }
+                else
+                {
+                    sortedList.Add(right[0]);
+                    right.RemoveAt(0);
+                }
+            }
+
+            return sortedList;
+        }
+
+        // Time complexity O(n log n) best case (O(n^2) worst case is a bad pivot is chosen).
+        // Space complexity O(log n) - very good!
+        // Quite a complicated sort - you chose a pivot and eventually all numbers lower than the pivot
+        // will be on its left and all numbers greater than it will be on its right.
+        // Once the pivot is in its place, divide the list and start again with new pivots.
+        // Keep going until you can divide no more, then combine the results to leave you with a sorted list.
+        public List<int> QuickSort(List<int> list, int leftIndex, int rightIndex)
+        {
+            int pivotIndex;
+            int partitionIndex;
+
+            if (leftIndex < rightIndex)
+            {
+                pivotIndex = rightIndex;
+                partitionIndex = Partition(list, pivotIndex, leftIndex, rightIndex);
+
+                //sort left and right
+                QuickSort(list, leftIndex, partitionIndex - 1);
+                QuickSort(list, partitionIndex + 1, rightIndex);
+            }
+
+            return list;
+        }
+
+        //Divides the list into two lists either side of the pivot.
+        private int Partition(List<int> list, int pivotIndex, int leftIndex, int rightIndex)
+        {
+            var pivotValue = list[pivotIndex];
+            var partitionIndex = leftIndex;
+
+            for (int i = leftIndex; i < rightIndex; i++)
+            {
+                if(list[i] < pivotValue)
+                {
+                    Swap(ref list, i, partitionIndex);
+                    partitionIndex++;
+                }
+            }
+
+            Swap(ref list, rightIndex, partitionIndex);
+            return partitionIndex;
+        }
+
+        //Simply swaps two numbers in a list.
+        private void Swap(ref List<int> list, int firstIndex, int secondIndex)
+        {
+            var temp = list[firstIndex];
+            list[firstIndex] = list[secondIndex];
+            list[secondIndex] = temp;
+        }
     }
 }
